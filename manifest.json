@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Save Image As (Local Clean)",
+  "version": "1.0.1",
+  "description": "Save images, canvases, inline SVG, and CSS background images as PNG, JPG, WebP, or their original format. Local-only with no remote config.",
+  "permissions": [
+    "contextMenus",
+    "downloads",
+    "storage",
+    "offscreen"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "service_worker.js"
+  },
+  "action": {
+    "default_title": "Save Image As (Local Clean)"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*",
+        "file:///*"
+      ],
+      "js": [
+        "content_script.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ]
+}
